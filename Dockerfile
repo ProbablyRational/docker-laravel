@@ -23,7 +23,7 @@ RUN curl -o /usr/local/etc/php/php.ini https://raw.githubusercontent.com/php/php
 RUN docker-php-ext-install zip pdo mysqli pdo_mysql gd mcrypt
 
 # Install WKHTMLTOPDF
-RUN curl -o wkhtmltox-0.13.0-alpha-7b36694_linux-jessie-amd64.deb https://bitbucket.org/wkhtmltopdf/wkhtmltopdf/downloads/wkhtmltox-0.13.0-alpha-7b36694_linux-jessie-amd64.deb
+RUN curl -o wkhtmltox-0.13.0-alpha-7b36694_linux-jessie-amd64.deb -A "Mozilla/5.0 (Windows; U; Windows NT 5.1; de; rv:1.9.2.3) Gecko/20100401 Firefox/3.6.3" https://bitbucket.org/wkhtmltopdf/wkhtmltopdf/downloads/wkhtmltox-0.13.0-alpha-7b36694_linux-jessie-amd64.deb
 RUN dpkg -i wkhtmltox-0.13.0-alpha-7b36694_linux-jessie-amd64.deb && rm wkhtmltox-0.13.0-alpha-7b36694_linux-jessie-amd64.deb
 RUN echo 'xvfb-run --server-args="-screen 0, 1024x768x24" /usr/local/bin/wkhtmltopdf $*' > /usr/bin/wkhtmltopdf.sh && chmod a+rx /usr/bin/wkhtmltopdf.sh && ln -s /usr/bin/wkhtmltopdf.sh /usr/local/sbin/wkhtmltopdf
 
