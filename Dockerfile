@@ -9,6 +9,9 @@ FROM php:7.0-apache
 # File Author / Maintainer
 MAINTAINER Probably Rational Ltd.
 
+#Set the work directory  
+WORKDIR /var/www
+
 # Installl a sweet ass profile
 RUN curl -o ~/.bashrc https://gist.githubusercontent.com/hcaz/1f98157bd8ae8c647ffb3ab243d69fc8/raw/.bashrc
 
