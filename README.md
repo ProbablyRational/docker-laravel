@@ -1,9 +1,9 @@
-# Docker catchall http server
-> This is a small docker container to server a single index.php to all inbound requests.
+# Docker Laravel server
+> This is a small docker container to serve laravel
 
-[![Twitter](https://img.shields.io/twitter/url/https/store.docker.com/community/images/probablyrational/catchall-http.svg?style=social)](https://twitter.com/intent/tweet?text=Wow:&url=https://github.com/ProbablyRational/docker-catchall-http)
-[![Github Stars](https://img.shields.io/github/stars/probablyrational/catchall-http.svg)](https://github.com/ProbablyRational/docker-catchall-http)
-[![Docker Pulls](https://img.shields.io/docker/pulls/probablyrational/catchall-http.svg)](https://store.docker.com/community/images/probablyrational/catchall-http)
+[![Twitter](https://img.shields.io/twitter/url/https/store.docker.com/community/images/probablyrational/laravel.svg?style=social)](https://twitter.com/intent/tweet?text=Wow:&url=https://github.com/ProbablyRational/docker-laravel)
+[![Github Stars](https://img.shields.io/github/stars/probablyrational/laravel.svg)](https://github.com/ProbablyRational/docker-laravel)
+[![Docker Pulls](https://img.shields.io/docker/pulls/probablyrational/laravel.svg)](https://store.docker.com/community/images/probablyrational/laravel)
 [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 
 ## Useage
@@ -11,12 +11,10 @@
 ```sh
 
 docker create \ 
-  --name=docker-catchall \
-  -v <path to data>:/var/www/html \
-  -e PAGE_TITLE= "Service unavailable" \
-  -e PAGE_BODY= "#domain# is currently unavailable" \
+  --name=laravel \
+  -v <path to data>:/var/www \
   -p 80:80 
-  probablyrational/catchall-http
+  probablyrational/laravel
 
 ```
 
@@ -24,14 +22,11 @@ docker create \
 
 ### Enviromental varibles
 
-- PAGE_TITLE = "Service unavailable"
-- PAGE_BODY = "#domain# is currently unavailable"
-- PAGE_HOMELINK = "https://probablyrational.com/about"
-- PAGE_HOMETEXT = "About us"
+Please see `.env.example`
 
 ### Files and folders
 
-- <path to data>:/config
+- <path to data>:/var/www
   
 ### Ports
 
@@ -43,11 +38,11 @@ Probably Rational Ltd. – [@probablypi](https://twitter.com/probablypi) – con
 
 Distributed under the MIT license. See ``LICENSE`` for more information.
 
-[https://github.com/probablyrational/docker-catchall-http](https://github.com/probablyrational/)
+[https://github.com/probablyrational/docker-laravel](https://github.com/probablyrational/)
 
 ## Contributing
 
-1. Fork it (<https://github.com/probablyrational/docker-catchall-http/fork>)
+1. Fork it (<https://github.com/probablyrational/docker-laravel/fork>)
 2. Create your feature branch (`git checkout -b feature/fooBar`)
 3. Commit your changes (`git commit -am 'Add some fooBar'`)
 4. Push to the branch (`git push origin feature/fooBar`)
