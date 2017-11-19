@@ -1,8 +1,9 @@
 ############################################################
-# Dockerfile to build MongoDB container images
-# Based on Alpine linux
+# Dockerfile to build Catchall HTTP container images
+# Based on php:7.0
 ############################################################
-# Set the base image to Alpine linux
+
+# Set the base image to php:7.0
 FROM php:7.0-apache
 
 # File Author / Maintainer
