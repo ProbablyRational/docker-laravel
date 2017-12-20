@@ -22,7 +22,7 @@ RUN apt update
 RUN apt install -y curl wget htop git nano xfonts-base xfonts-75dpi fontconfig xvfb libjpeg62 libxrender1 zlib1g-dev libpng-dev cron libmcrypt-dev libreadline-dev
 
 # Configure PHP
-RUN curl -o /usr/local/etc/php/php.ini https://raw.githubusercontent.com/php/php-src/master/php.ini-production
+RUN curl -o /usr/local/etc/php/php.ini https://raw.githubusercontent.com/ProbablyRational/docker-laravel/master/php.ini-production
 RUN docker-php-ext-install zip pdo mysqli pdo_mysql gd mcrypt
 
 # Install WKHTMLTOPDF
