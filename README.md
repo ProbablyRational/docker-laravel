@@ -14,7 +14,7 @@ docker create \
   --name=laravel \
   -v <path to data>:/var/www \
   -p 80:80 
-  probablyrational/laravel
+  probablyrational/docker-laravel
 
 ```
 
