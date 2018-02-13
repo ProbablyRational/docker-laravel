@@ -1,10 +1,10 @@
 ############################################################
 # Dockerfile to build Catchall HTTP container images
-# Based on php:7.0
+# Based on php:7.2
 ############################################################
 
-# Set the base image to php:7.0
-FROM php:7.0-apache
+# Set the base image to php:7.2
+FROM php:7.2-apache
 
 # File Author / Maintainer
 MAINTAINER Probably Rational Ltd.
