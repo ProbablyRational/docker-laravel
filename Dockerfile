@@ -24,10 +24,10 @@ RUN apt install -y curl wget htop git nano xfonts-base xfonts-75dpi fontconfig x
 # Configure PHP
 RUN curl -o /usr/local/etc/php/php.ini https://raw.githubusercontent.com/ProbablyRational/docker-laravel/master/php.ini-production
 RUN docker-php-ext-install bcmath calendar ctype curl dba dom enchant exif fileinfo mbstring mysqli
-RUN docker-php-ext-install filter ftp gd gettext gmp hash iconv imap interbase intl json ldap
+RUN docker-php-ext-install filter ftp gd gettext gmp hash iconv imap json ldap zip
 RUN docker-php-ext-install oci8 odbc opcache pcntl pdo pdo_dblib pdo_firebird pdo_mysql pdo_oci pdo_odbc pdo_pgsql
 RUN docker-php-ext-install pdo_sqlite pgsql phar posix pspell readline recode reflection session shmop
-RUN docker-php-ext-install simplexml snmp soap sockets xml xmlreader xmlrpc xmlwriter zip
+RUN docker-php-ext-install simplexml snmp soap sockets xml xmlreader xmlrpc xmlwriter
 
 # Install WKHTMLTOPDF
 COPY wkhtmltox-0.13.0-alpha-7b36694_linux-jessie-amd64.deb wkhtmltox-0.13.0-alpha-7b36694_linux-jessie-amd64.deb
