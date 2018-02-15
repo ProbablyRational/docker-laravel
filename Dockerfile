@@ -25,7 +25,8 @@ RUN apt install -y curl wget htop git nano xfonts-base xfonts-75dpi fontconfig x
 RUN curl -o /usr/local/etc/php/php.ini https://raw.githubusercontent.com/ProbablyRational/docker-laravel/master/php.ini-production
 RUN docker-php-ext-install bcmath calendar ctype curl
 RUN docker-php-ext-install dba dom exif fileinfo mbstring
-RUN docker-php-ext-install mysqli filter ftp gd gettext gmp
+RUN docker-php-ext-install mysqli ftp gd
+RUN docker-php-ext-install filter gettext gmp
 RUN docker-php-ext-install hash iconv imap json zip simplexml
 RUN docker-php-ext-install sockets xml xmlreader xmlwriter
 
