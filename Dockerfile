@@ -26,7 +26,6 @@ RUN curl -o /usr/local/etc/php/php.ini https://raw.githubusercontent.com/Probabl
 RUN docker-php-ext-install bcmath calendar ctype curl
 RUN docker-php-ext-install dba dom exif fileinfo mbstring
 RUN docker-php-ext-install mysqli ftp gd
-RUN docker-php-ext-install filter gettext gmp
 RUN docker-php-ext-install hash iconv imap json zip simplexml
 RUN docker-php-ext-install sockets xml xmlreader xmlwriter
 
