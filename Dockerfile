@@ -19,15 +19,11 @@ RUN curl -o ~/.bashrc https://gist.githubusercontent.com/hcaz/1f98157bd8ae8c647f
 RUN apt update
 
 # Install essentials
-RUN apt install -y curl wget htop git nano xfonts-base xfonts-75dpi fontconfig xvfb libjpeg62 libxrender1 zlib1g-dev libpng-dev cron libmcrypt-dev libreadline-dev libssl-dev libcurl4-openssl-dev pkg-config libxml2-dev libenchant-dev
+RUN apt install -y curl wget htop git nano xfonts-base xfonts-75dpi fontconfig xvfb libjpeg62 libxrender1 zlib1g-dev libpng-dev cron libmcrypt-dev libreadline-dev libssl-dev libcurl4-openssl-dev pkg-config libxml2-dev
 
 # Configure PHP
 RUN curl -o /usr/local/etc/php/php.ini https://raw.githubusercontent.com/ProbablyRational/docker-laravel/master/php.ini-production
-RUN docker-php-ext-install bcmath calendar ctype curl dba dom enchant exif fileinfo mbstring mysqli
-RUN docker-php-ext-install filter ftp gd gettext gmp hash iconv imap json ldap zip
-RUN docker-php-ext-install oci8 odbc opcache pcntl pdo pdo_dblib pdo_firebird pdo_mysql pdo_oci pdo_odbc pdo_pgsql
-RUN docker-php-ext-install pdo_sqlite pgsql phar posix pspell readline recode reflection session shmop
-RUN docker-php-ext-install simplexml snmp soap sockets xml xmlreader xmlrpc xmlwriter
+RUN docker-php-ext-install bcmath calendar ctype curl dba dom exif fileinfo mbstring mysqli filter ftp gd gettext gmp hash iconv imap json zip simplexml sockets xml xmlreader xmlwriter
 
 # Install WKHTMLTOPDF
 COPY wkhtmltox-0.13.0-alpha-7b36694_linux-jessie-amd64.deb wkhtmltox-0.13.0-alpha-7b36694_linux-jessie-amd64.deb
