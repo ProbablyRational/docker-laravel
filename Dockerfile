@@ -23,10 +23,7 @@ RUN apt install -y curl wget htop git nano xfonts-base xfonts-75dpi fontconfig x
 
 # Configure PHP
 RUN curl -o /usr/local/etc/php/php.ini https://raw.githubusercontent.com/ProbablyRational/docker-laravel/master/php.ini-production
-RUN docker-php-ext-install bcmath calendar ctype curl
-RUN docker-php-ext-install dba dom exif fileinfo mbstring
-RUN docker-php-ext-install mysqli ftp gd sockets
-RUN docker-php-ext-install hash iconv json zip simplexml
+RUN docker-php-ext-install bcmath calendar ctype curl dba dom exif fileinfo mbstring mysqli pdo_mysql ftp gd sockets hash iconv json zip simplexml
 
 # Install Composer
 RUN mkdir -p ~/.composer/vendor/bin
