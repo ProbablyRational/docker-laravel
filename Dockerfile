@@ -19,10 +19,11 @@ RUN curl -o ~/.bashrc https://gist.githubusercontent.com/hcaz/1f98157bd8ae8c647f
 RUN apt update
 
 # Install essentials
-RUN apt install -y curl wget htop git nano xfonts-base xfonts-75dpi fontconfig xvfb libjpeg62 libxrender1 zlib1g-dev libpng-dev cron libmcrypt-dev libreadline-dev
+RUN apt install -y curl wget htop git nano xfonts-base xfonts-75dpi fontconfig xvfb libjpeg62 libxrender1 zlib1g-dev cron libmcrypt-dev libreadline-dev libfreetype6-dev libmcrypt-dev libpng12-dev libjpeg-dev libpng-dev
 
 # Configure PHP
 RUN curl -o /usr/local/etc/php/php.ini https://raw.githubusercontent.com/ProbablyRational/docker-laravel/master/php.ini-production
+docker-php-ext-configure gd --enable-gd-native-ttf --with-freetype-dir=/usr/include/freetype2 --with-png-dir=/usr/include --with-jpeg-dir=/usr/include
 RUN docker-php-ext-install zip pdo mysqli pdo_mysql gd mcrypt
 
 # Install WKHTMLTOPDF
