@@ -23,7 +23,7 @@ RUN apt install -y curl wget htop git nano xfonts-base xfonts-75dpi fontconfig x
 
 # Configure PHP
 RUN curl -o /usr/local/etc/php/php.ini https://raw.githubusercontent.com/ProbablyRational/docker-laravel/master/php.ini-production
-docker-php-ext-configure gd --enable-gd-native-ttf --with-freetype-dir=/usr/include/freetype2 --with-png-dir=/usr/include --with-jpeg-dir=/usr/include
+RUN docker-php-ext-configure gd --enable-gd-native-ttf --with-freetype-dir=/usr/include/freetype2 --with-png-dir=/usr/include --with-jpeg-dir=/usr/include
 RUN docker-php-ext-install bcmath calendar ctype curl dba dom exif fileinfo mbstring mysqli pdo_mysql ftp gd sockets hash iconv json zip simplexml
 
 # Install Composer
