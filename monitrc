@@ -1,0 +1,32 @@
+set daemon 120
+set logfile /var/log/monit.log
+set idfile /var/lib/monit/id
+set statefile /var/lib/monit/state
+set eventqueue
+	basedir /var/lib/monit/events
+	slots 100
+
+set httpd port 2812 and
+	use address 0.0.0.0
+	allow admin:monit
+
+check system $HOST
+
+check directory www with path /var/www/public
+
+check filesystem rootfs with path /
+
+check host cloudflare with address 1.1.1.1
+	if failed port 443 protocol https then alert
+check host google with address google.com
+	if failed port 443 protocol https then alert
+check host enhost with address enhost.io
+	if failed port 443 protocol https then alert
+check host local with address localhost
+	if failed port 80 protocol apache-status path /pr_kvty6ChS_server_status then alert
+
+check network public with interface eth0
+
+check process apache2 with pidfile /var/run/apache2/apache2.pid
+
+include /var/www/public/monitConf
