@@ -24,7 +24,7 @@ RUN apt update
 RUN apt install -y git curl wget zip unzip htop nano ncdu screen sshfs sl cowsay python-minimal openssh-server xfonts-base xfonts-75dpi fontconfig xvfb libjpeg62 libxrender1 zlib1g-dev cron libmcrypt-dev libreadline-dev libssl-dev libcurl4-openssl-dev pkg-config libxml2-dev libfreetype6-dev libmcrypt-dev libjpeg-dev libpng-dev monit
 
 # Configure PHP
-RUN curl -o /usr/local/etc/php/php.ini https://raw.githubusercontent.com/ProbablyRational/docker-laravel/master/php.ini-production
+COPY php.ini-production /usr/local/etc/php/php.ini
 RUN docker-php-ext-configure gd --enable-gd-native-ttf --with-freetype-dir=/usr/include/freetype2 --with-png-dir=/usr/include --with-jpeg-dir=/usr/include
 RUN docker-php-ext-install bcmath calendar ctype curl dba dom exif fileinfo mbstring mysqli pdo_mysql ftp gd sockets hash iconv json zip simplexml
 
