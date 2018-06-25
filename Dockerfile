@@ -58,5 +58,5 @@ RUN chmod 600 /etc/monit/monitrc
 # Expose ports
 EXPOSE 80
 EXPOSE 2812
-
+VOLUME ["/var/www", "/var/log/apache2", "/etc/monit"]
 ENTRYPOINT service ssh start && service apache2 start && monit&& /bin/bash
