@@ -25,7 +25,7 @@ RUN chmod 600 /etc/motd
 RUN apt update
 
 # Install essentials
-RUN apt install -y git curl wget zip unzip htop nano ncdu screen sshfs sl cowsay python-minimal openssh-server xfonts-base xfonts-75dpi fontconfig xvfb libjpeg62 libxrender1 zlib1g-dev cron libmcrypt-dev libreadline-dev libssl-dev libcurl4-openssl-dev pkg-config libxml2-dev libfreetype6-dev libmcrypt-dev libjpeg-dev libpng-dev monit
+RUN apt install -y git curl wget zip unzip htop nano ncdu screen sshfs sl cowsay python-minimal openssh-server xfonts-base xfonts-75dpi fontconfig xvfb libjpeg62 libxrender1 zlib1g-dev cron libmcrypt-dev libreadline-dev libssl-dev libcurl4-openssl-dev pkg-config libxml2-dev libfreetype6-dev libmcrypt-dev libjpeg-dev libpng-dev monit gnupg
 
 # Configure PHP
 COPY php.ini-production /usr/local/etc/php/php.ini
@@ -38,6 +38,13 @@ RUN curl -o installer.php https://getcomposer.org/installer && php installer.php
 
 # Install laravel
 RUN php ~/.composer/vendor/bin/composer.phar global require "laravel/installer"
+
+# Install nodejs
+RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
+RUN apt install -y nodejs
+
+# Install APIdoc
+RUN npm install apidoc -g
 
 # Clean up
 RUN rm -rf /var/www/*
