@@ -62,9 +62,14 @@ RUN chmod 600 /etc/monit/monitrc
 # Expose ports
 EXPOSE 80
 EXPOSE 2812
+<<<<<<< HEAD
 
 # Expose folders
-VOLUME /var/www /root/.ssh /var/log/apache2 /etc/monit
+VOLUME /var/www /root/.ssh
 
 # Run
 ENTRYPOINT git config --global user.name "$GIT_NAME" && git config --global user.email "$GIT_EMAIL" && service ssh start && service apache2 start && monit && /bin/bash
+=======
+VOLUME ["/var/www", "/var/log/apache2", "/etc/monit"]
+ENTRYPOINT service ssh start && service apache2 start && monit&& /bin/bash
+>>>>>>> 8e65cfed7a55f5e11467a6434a01640d7ed93142
