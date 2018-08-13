@@ -9,7 +9,11 @@ FROM php:7.2-apache
 # File Author / Maintainer
 MAINTAINER Probably Rational Ltd.
 
-#Set the work directory  
+# Enviromental vars
+ENV GIT_NAME "Probably Rational Ltd"
+ENV GIT_EMAIL "git@probablyrational.com"
+
+#Set the work directory
 WORKDIR /var/www
 
 # Installl a sweet ass profile
@@ -59,4 +63,8 @@ RUN chmod 600 /etc/monit/monitrc
 EXPOSE 80
 EXPOSE 2812
 
-ENTRYPOINT service ssh start && service apache2 start && monit&& /bin/bash
+# Expose folders
+VOLUME /var/www /root/.ssh
+
+# Run
+ENTRYPOINT git config --global user.name "$GIT_NAME" && git config --global user.email "$GIT_EMAIL" && service ssh start && service apache2 start && monit && /bin/bash
