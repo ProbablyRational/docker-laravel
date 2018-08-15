@@ -74,4 +74,5 @@ EXPOSE 2812
 VOLUME /var/www /root/.ssh /var/log/apache2 /etc/monit
 
 # Run
-ENTRYPOINT git config --global user.name "$GIT_NAME" && git config --global user.email "$GIT_EMAIL" && service ssh start && service apache2 start && monit && /bin/bash
+COPY entry.sh /root/entry.sh
+ENTRYPOINT sh /root/entry.sh && /bin/bash
