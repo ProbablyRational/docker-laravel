@@ -49,9 +49,12 @@ RUN npm install apidoc -g
 # Clean up
 RUN rm -rf /var/www/*
 
+# Gen SSL
+RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/ssl-cert-pr.key -out /etc/ssl/certs/ssl-cert-pr.pem -subj "/C=GB/ST=Lincoln/L=Lincoln/O=Security/OU=Internal/CN=hls.me"
+
 # Configure apache
 COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
-RUN a2enmod status rewrite
+RUN a2enmod status rewrite ssl
 
 # Copy in required files
 COPY app/ /var/www/public/
@@ -68,6 +71,7 @@ RUN chmod 600 /etc/monit/monitrc
 
 # Expose ports
 EXPOSE 80
+EXPOSE 443
 EXPOSE 2812
 
 # Expose folders
