@@ -25,7 +25,7 @@ RUN chmod 600 /etc/motd
 RUN apt update
 
 # Install essentials
-RUN apt install -y git curl wget zip unzip htop nano ncdu screen pdftk sshfs sl cowsay python-minimal openssh-server xfonts-base xfonts-75dpi fontconfig xvfb libjpeg62 libxrender1 zlib1g-dev cron libmcrypt-dev libreadline-dev libssl-dev libcurl4-openssl-dev pkg-config libxml2-dev libfreetype6-dev libmcrypt-dev libjpeg-dev libpng-dev monit gnupg
+RUN apt install -y git curl wget zip unzip htop nano ncdu screen pdftk sshfs sl cowsay python-minimal openssh-server xfonts-base xfonts-75dpi fontconfig xvfb libjpeg62 libxrender1 zlib1g-dev cron libmcrypt-dev libreadline-dev libssl-dev libcurl4-openssl-dev pkg-config libxml2-dev libfreetype6-dev libmcrypt-dev libjpeg-dev libpng-dev monit supervisor gnupg
 
 # Configure PHP
 COPY php.ini-production /usr/local/etc/php/php.ini
@@ -68,6 +68,9 @@ RUN mv ~/.composer/vendor/bin/composer.phar ~/.composer/vendor/bin/composer
 # Setup Monit
 COPY monitrc /etc/monit/monitrc
 RUN chmod 600 /etc/monit/monitrc
+
+# Configure supervisor
+COPY laravel-worker.conf /etc/supervisor/conf.d/laravel-worker.conf
 
 # Expose ports
 EXPOSE 80
