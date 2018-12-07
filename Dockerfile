@@ -37,7 +37,7 @@ COPY libpng12-0_1.2.54-1ubuntu1.1_amd64.deb libpng12-0_1.2.54-1ubuntu1.1_amd64.d
 RUN dpkg -i libpng12-0_1.2.54-1ubuntu1.1_amd64.deb && rm libpng12-0_1.2.54-1ubuntu1.1_amd64.deb
 
 COPY libicu52_52.1-8_amd64.deb libicu52_52.1-8_amd64.deb
-RUN dpkg -i libicu52_52.1-8_amd64.deb libicu52_52.1-8_amd64.deb && rm libicu52_52.1-8_amd64.deb libicu52_52.1-8_amd64.deb
+RUN dpkg -i libicu52_52.1-8_amd64.deb && rm libicu52_52.1-8_amd64.deb
 
 COPY wkhtmltox-0.13.0-alpha-7b36694_linux-jessie-amd64.deb wkhtmltox-0.13.0-alpha-7b36694_linux-jessie-amd64.deb
 RUN dpkg -i wkhtmltox-0.13.0-alpha-7b36694_linux-jessie-amd64.deb && rm wkhtmltox-0.13.0-alpha-7b36694_linux-jessie-amd64.deb
