@@ -32,21 +32,6 @@ COPY php.ini-production /usr/local/etc/php/php.ini
 RUN docker-php-ext-configure gd --enable-gd-native-ttf --with-freetype-dir=/usr/include/freetype2 --with-png-dir=/usr/include --with-jpeg-dir=/usr/include
 RUN docker-php-ext-install bcmath calendar ctype curl dba dom exif fileinfo mbstring mysqli pdo_mysql ftp gd sockets hash iconv json zip simplexml
 
-# Install WKHTMLTOPDF
-ENV DEBIAN_FRONTEND noninteractive
-COPY libpng12-0_1.2.54-1ubuntu1.1_amd64.deb libpng12-0_1.2.54-1ubuntu1.1_amd64.deb
-RUN dpkg -i libpng12-0_1.2.54-1ubuntu1.1_amd64.deb && rm libpng12-0_1.2.54-1ubuntu1.1_amd64.deb
-
-COPY libicu52_52.1-8_amd64.deb libicu52_52.1-8_amd64.deb
-RUN dpkg -i libicu52_52.1-8_amd64.deb && rm libicu52_52.1-8_amd64.deb
-
-COPY libssl1.0.0_1.0.1t-1+deb8u10_amd64.deb libssl1.0.0_1.0.1t-1+deb8u10_amd64.deb
-RUN dpkg -i libssl1.0.0_1.0.1t-1+deb8u10_amd64.deb && rm libssl1.0.0_1.0.1t-1+deb8u10_amd64.deb
-
-COPY wkhtmltox-0.13.0-alpha-7b36694_linux-jessie-amd64.deb wkhtmltox-0.13.0-alpha-7b36694_linux-jessie-amd64.deb
-RUN dpkg -i wkhtmltox-0.13.0-alpha-7b36694_linux-jessie-amd64.deb && rm wkhtmltox-0.13.0-alpha-7b36694_linux-jessie-amd64.deb
-RUN echo 'xvfb-run --server-args="-screen 0, 1024x768x24" /usr/local/bin/wkhtmltopdf $*' > /usr/bin/wkhtmltopdf.sh && chmod a+rx /usr/bin/wkhtmltopdf.sh && ln -s /usr/bin/wkhtmltopdf.sh /usr/local/sbin/wkhtmltopdf
-
 # Install Composer
 RUN mkdir -p ~/.composer/vendor/bin
 RUN curl -o installer.php https://getcomposer.org/installer && php installer.php --install-dir ~/.composer/vendor/bin && rm installer.php
