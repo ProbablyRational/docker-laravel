@@ -22,8 +22,3 @@ if [ "$GIT_PULL" != "" ]; then
 		php artisan config:cache
 	fi
 fi
-while [ true ]
-do
-	php /var/www/artisan schedule:run --verbose --no-interaction &
-	sleep 60
-done
