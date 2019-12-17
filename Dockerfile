@@ -25,7 +25,7 @@ RUN chmod 600 /etc/motd
 RUN apt update
 
 # Install essentials
-RUN apt install -y git curl wget zip unzip htop nano ncdu screen sshfs sl cowsay python-minimal openssh-server xfonts-base xfonts-75dpi fontconfig xvfb libjpeg62 libxrender1 zlib1g-dev cron libmcrypt-dev libreadline-dev libssl-dev libcurl4-openssl-dev pkg-config libxml2-dev libfreetype6-dev libmcrypt-dev libjpeg-dev libpng-dev monit supervisor libmagickwand-dev gnupg
+RUN apt install -y git curl wget zip unzip htop nano ncdu screen sshfs sl cowsay python-minimal openssh-server xfonts-base xfonts-75dpi fontconfig xvfb libjpeg62 libxrender1 zlib1g-dev cron libmcrypt-dev libreadline-dev libssl-dev libcurl4-openssl-dev pkg-config libxml2-dev libfreetype6-dev libmcrypt-dev libjpeg-dev libpng-dev supervisor libmagickwand-dev gnupg
 
 # Configure PHP
 RUN pecl install imagick
@@ -67,20 +67,15 @@ RUN touch crontab.tmp && echo '*/5 * * * * curl -fsS --retry 3 https://hchk.io/$
 # Make composer work globally ;)
 RUN mv ~/.composer/vendor/bin/composer.phar ~/.composer/vendor/bin/composer
 
-# Setup Monit
-COPY monitrc /etc/monit/monitrc
-RUN chmod 600 /etc/monit/monitrc
-
 # Configure supervisor
 COPY laravel-worker.conf /etc/supervisor/conf.d/laravel-worker.conf
 
 # Expose ports
 EXPOSE 80
 EXPOSE 443
-EXPOSE 2812
 
 # Expose folders
-VOLUME /var/www /root/.ssh /var/log/apache2 /etc/monit
+VOLUME /var/www /root/.ssh /var/log/apache2
 
 # Run
 COPY entry.sh /root/entry.sh
